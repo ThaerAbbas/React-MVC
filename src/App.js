@@ -2,6 +2,9 @@ import './App.css';
 import Home from './components/Home';
 import {Persons} from './components/Persons';
 import { Route,Routes, Link } from 'react-router-dom';
+import {Country} from './components/Country';
+import {Language} from './components/Language';
+
 
 function App() {
   return (
@@ -16,6 +19,12 @@ function App() {
     <Link className="btn btn-light btn_outline-primary" to = "/Persons">
     Persons
     </Link>
+    <Link className="btn btn-light btn_outline-primary" to = "/Country">
+    Country
+    </Link>
+    <Link className="btn btn-light btn_outline-primary" to = "/Language">
+    Language
+    </Link>
   
   </li>
 
@@ -25,6 +34,9 @@ function App() {
       <Routes>
         <Route path='/Home'  element={ <Home/> } />
         <Route path='/Persons' element={ <Persons/> }/>
+        <Route path='/Country'  element={ <Country/> } />
+        <Route path='/Language' element={ <Language/> }/>
+       
 
         
       </Routes>

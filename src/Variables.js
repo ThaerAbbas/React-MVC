@@ -1,3 +1,7 @@
 export const Variables = {
-    API_URL:"https://localhost:7161/"
+    API_URL:"https://localhost:7161/",
+    PERSONS:"api/Persons/GetPersons",
+    COUNTRY:"api/Persons/GetCountry",
+    LANGUAGE:"api/Persons/GetLanguage",
+    BY_ID : "api/Persons/GetById/"
 }
