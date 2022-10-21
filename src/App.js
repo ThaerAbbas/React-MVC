@@ -4,6 +4,7 @@ import {Persons} from './components/Persons';
 import { Route,Routes, Link } from 'react-router-dom';
 import {Country} from './components/Country';
 import {Language} from './components/Language';
+import {NewPerson} from './components/NewPerson';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path='/Persons' element={ <Persons/> }/>
         <Route path='/Country'  element={ <Country/> } />
         <Route path='/Language' element={ <Language/> }/>
+        <Route path='/NewPerson' element={ <NewPerson/> }/>
        
 
         

@@ -1,5 +1,9 @@
 import React from "react";
 import { Variables } from "../Variables";
+import {Link } from 'react-router-dom';
+
+
+
 
 export class Persons extends React.Component {
   constructor(props) {
@@ -15,14 +19,20 @@ export class Persons extends React.Component {
       languages: "",
       cityName: "",
       countryName: "",
+      nameFilter:"",
+     
+      personAfterFilter:[]
+  
     };
   }
 
+
+  
   refreshList() {
     fetch(Variables.API_URL + Variables.PERSONS)
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ person: data.listPersons });
+        this.setState({ person: data.listPersons,personAfterFilter:data });
         console.log("===========data============");
         console.log(this.state);
       });
@@ -55,6 +65,7 @@ export class Persons extends React.Component {
   componentDidMount() {
     this.refreshList();
     this.DetailsList();
+   
   }
 
   detailsClick(per) {
@@ -64,7 +75,25 @@ export class Persons extends React.Component {
     this.DetailsList(per.personId);
   }
 
+  filterFn(){
+    var nameFilter = this.state.nameFilter;
+    var filerData = this.state.personAfterFilter.filter(
+      function(el){
+        return el.name.toString().toLowerCase().includes(
+          nameFilter.toString().trim().toString()
+        )
+      }
+    ); 
+    this.state.person = filerData;
+  }
+
+  SershBar = (e)=>{
+    this.state.nameFilter = e.target.value;
+    this.filterFn();
+  }
+
   render() {
+  
     const {
       person,
       modalTitel,
@@ -74,8 +103,12 @@ export class Persons extends React.Component {
       phoneNumber,
       languages,
       cityName,
-      countryName,
+      countryName
     } = this.state;
+   
+ 
+  
+    
 
     console.log("===========person============");
     console.log(person);
@@ -83,6 +116,15 @@ export class Persons extends React.Component {
     console.log(details);
     return (
       <div>
+       <input className="form-control m-2"
+       onChange={this.SershBar}
+       placeholder="Filter by name..."/>
+     
+     <div className="col text-start">
+     <Link className="btn btn-info link-light" to = "/NewPerson">
+    Add new Person
+    </Link>
+    </div>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -167,3 +209,4 @@ export class Persons extends React.Component {
     );
   }
 }
+

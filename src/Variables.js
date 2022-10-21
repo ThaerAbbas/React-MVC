@@ -3,5 +3,6 @@ export const Variables = {
     PERSONS:"api/Persons/GetPersons",
     COUNTRY:"api/Persons/GetCountry",
     LANGUAGE:"api/Persons/GetLanguage",
-    BY_ID : "api/Persons/GetById/"
+    BY_ID : "api/Persons/GetById/",
+    ADD_NEW_PERSON:"api/Persons/AddPersons"
 }
