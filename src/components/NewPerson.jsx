@@ -1,6 +1,6 @@
 import React from "react";
 import { Variables } from "../Variables";
-import { Persons } from "./Persons";
+
 
 
 export class NewPerson extends React.Component {
@@ -21,19 +21,20 @@ export class NewPerson extends React.Component {
    
         creatClick(){
             fetch(Variables.API_URL + Variables.ADD_NEW_PERSON,{
-                method:'POST',
-                headers:{
+                method: 'POST',
+                headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({
-                    Name:this.state.Name,
-                    PhoneNumber:this.state.PhoneNumber
+                    'Content-Type': 'application/json',
+                  },
+                body:JSON.stringify(
+                    this.state.Name,
+                    this.state.PhoneNumber
 
-                })
+                )
             })
                 .then(response => response.json())
                 .then((result)=>{
+                  
                     alert(result);
                 },(error)=>{
                     alert('Faild');

@@ -38,6 +38,24 @@ export class Persons extends React.Component {
       });
   }
 
+  Delete(idPerson){
+    fetch(Variables.DELETE + idPerson, {
+      method: "DELETE",
+      hedar: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result)=>{
+                  
+        alert('deleted successful');
+    },(error)=>{
+        alert('Faild');
+    
+    })
+  }
+
   DetailsList(idPerson) {
     fetch(Variables.API_URL + Variables.BY_ID + idPerson, {
       method: "POST",
@@ -74,6 +92,12 @@ export class Persons extends React.Component {
     });
     this.DetailsList(per.personId);
   }
+
+  deleteClick(per) {
+    this.Delete(per.personId);
+  }
+
+
 
   filterFn(){
     var nameFilter = this.state.nameFilter;
@@ -150,13 +174,19 @@ export class Persons extends React.Component {
                 >
                   Details
                 </button>
+                <button  
+                  className="btn btn-danger"
+                  onClick={() => this.deleteClick(per)}
+                >
+                  Delete
+                </button>
               </tr>
             ))}
           </tbody>
         </table>
 
         <div id="exampleModel" class="modal" tabindex="-1">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">{modalTitel}</h5>
@@ -178,6 +208,7 @@ export class Persons extends React.Component {
                         <th scope="col">City</th>
                         <th scope="col">Country</th>
                         <th scope="col">Language</th>
+                       
                       </tr>
                     </thead>
                     <tbody>
@@ -188,6 +219,9 @@ export class Persons extends React.Component {
                         <td>{cityName}</td>
                         <td>{countryName}</td>
                         <td>{languages}</td>
+                      
+                          
+                 
                       </tr>
                     </tbody>
                   </table>
