@@ -40,18 +40,22 @@ export class Persons extends React.Component {
 
   Delete(idPerson){
     fetch(Variables.DELETE + idPerson, {
+
       method: "DELETE",
-      hedar: {
+      headars: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+    
     })
-      .then((response) => response.json())
+    .then((response) => {
+      return response.json();
+    })
       .then((result)=>{
                   
-        alert('deleted successful');
+        alert('deleted successful',result);
     },(error)=>{
-        alert('Faild');
+        alert('Faild',error);
     
     })
   }
@@ -175,7 +179,7 @@ export class Persons extends React.Component {
                   Details
                 </button>
                 <button  
-                  className="btn btn-danger"
+                    className="btn btn-light btn_outline-primary"
                   onClick={() => this.deleteClick(per)}
                 >
                   Delete

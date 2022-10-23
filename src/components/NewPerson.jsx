@@ -22,9 +22,9 @@ export class NewPerson extends React.Component {
         creatClick(){
             fetch(Variables.API_URL + Variables.ADD_NEW_PERSON,{
                 method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                hedar: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                   },
                 body:JSON.stringify(
                     this.state.Name,
