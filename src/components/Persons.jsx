@@ -54,6 +54,7 @@ export class Persons extends React.Component {
       .then((result)=>{
                   
         alert('deleted successful',result);
+        this.refreshList();
     },(error)=>{
         alert('Faild',error);
     
